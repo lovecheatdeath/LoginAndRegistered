@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--通过这个配置文件，完成mybatis与数据库的连接  -->
+<configuration>
+    <typeAliases>
+        <package name="com.jnshu.pojo"/>
+    </typeAliases>
+    <!--    <settings>
+            <setting name="jdbcTypeForNull" value="NULL" />
+        </settings>-->
+    <!--<plugins>-->
+        <!--&lt;!&ndash; com.github.pagehelper为PageHelper类所在包名 &ndash;&gt;-->
+        <!--<plugin interceptor="com.github.pagehelper.PageInterceptor">-->
+            <!--&lt;!&ndash; 使用下面的方式配置参数，后面会有所有的参数介绍 &ndash;&gt;-->
+            <!--<property name="param1" value="value1"/>-->
+        <!--</plugin>-->
+    <!--</plugins>-->
+</configuration>

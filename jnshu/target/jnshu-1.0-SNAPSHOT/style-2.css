@@ -1,0 +1,243 @@
+
+html{font-size: 62.5%}
+html,body{
+          width: 100%;
+          height: 100%;
+         }
+body{background-color: #fafafa;}
+
+.head-text{font-size: 1.4rem;
+           color: #29b078;
+           padding-top: 1.4rem;
+           padding-bottom: 1.4rem;
+          }
+.head-icon{
+      text-align: end;
+      padding-top: 0.85rem;
+      padding-bottom: 0.85rem;
+}
+.head-icon img{
+      padding-right: 0.5rem;
+}
+
+.navigation-menu1{background-color: #29b078;
+                }
+.navigation-menu{background-color: #29b078;
+                }
+.navbar{padding: 0;
+        background-color: #29b078 !important;
+        justify-content: space-between;
+       }
+.navber-toggler{opacity: 0.5;
+                border: none;
+                border-radius: 0.2rem;
+               }
+.navbar-toggler-icon{width: 2.5rem;
+                     height: 2.5rem;
+                    }
+.active .nav-link{background-color:#38c58a;}
+.nav-link{text-align: center;
+          font-size: 1.6rem;
+          background-color: #29b078;
+          color: #fff;
+         }
+nav>a>img{display: block;}
+.nav-link:hover{background-color:#38c58a;
+                color: #fff;
+               }
+@media screen and (min-width: 768px){
+                                     .navigation-menu1{display: none;}
+                                     .active .nav-link{background-color: inherit;
+                                                       border-bottom: 0.2rem solid #fff;
+                                                      }
+                                     .nav-link:hover{background-color:inherit;
+                                                     color: #fff;
+                                                     border-bottom: 0.2rem solid #fff;
+                                                    }
+                                     .nav-link{padding: 2rem 1rem;}
+                                     } 
+
+@media screen and (max-width: 768px){
+                                     .navigation-menu{display: none;}
+                                     .head-icon{
+                                          display: none;
+                                    }
+                                          }                                         
+
+
+.home{font-size: 1.6rem;
+      padding: 3rem 0;
+      margin-bottom: 2rem;
+      border-bottom: 0.1rem solid #d0d6d9;
+     }
+.home>span{color:#29b078}
+
+
+.classify{display: inline-block;
+          font-size: 1.4rem;
+          color: #afafaf;
+          margin-bottom: 2rem;
+          margin-right: 1rem;
+         }
+.profession{display: inline-block;
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            margin-right: 3rem;
+           }
+.profession>a{color:#000;
+              text-decoration:none; 
+             }
+.profession>a:hover{color: #fff;
+                    background-color: #29b078;
+                 }
+
+.profession-name{font-size: 1.6rem;
+                 padding-bottom:3rem;
+                 margin-bottom: 4rem;
+                 border-bottom: 0.1rem solid #d0d6d9;
+                }
+
+
+
+table{
+      margin-left: -15px;
+      margin-right: -15px;
+      background-color: #fff;
+      margin-bottom: 3rem;
+}
+td{border: 0.1rem solid #d0d6d9;
+   
+  }
+.row1>td{height: 17rem;
+        }
+
+.row1>td>img{
+             float: left;
+             margin: 0 1rem;
+            }
+.intro{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 139px;
+}            
+.intro-name{
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+           }
+.intro-info{
+            word-break: break-all;
+            font-size: 1.4rem;
+            line-height: 1.5rem;
+            margin-right: 1rem;
+           }  
+       
+.row2{color: #a9a9a9;
+      font-size: 1.2rem;
+      height: 4rem;
+      }
+.row2-col1,.row2-col2{padding-left: 1rem;
+                      width: 50%;
+                     }
+.row2-col1 span{
+      line-height: inherit;
+      vertical-align: middle;
+}
+.row2-col2 span{
+      line-height: inherit;
+      vertical-align: middle;
+}
+
+.row2 img{margin-left: 1rem;
+      line-height: inherit;
+      vertical-align: middle;
+         }
+.row3{color: #a9a9a9;
+      font-size: 1.2rem;
+      height: 4rem;
+      line-height: 1.4rem;}
+.row3-col1,.row3-col2{padding-left: 1rem;}
+.row3 span{color: #f01400;
+           padding-left: 1rem;
+          }
+.row4-col1{text-align: center;
+           color: #a9a9a9;
+           font-size: 1.2rem;
+           width: 40%;
+          }
+.row4-col2{font-size: 1.2rem;
+           height: 3.5rem;
+           padding: 0 1rem;
+           line-height: 1.4rem;}
+.row4-col2>span{display: inline-block;
+                float: right;
+               }
+.row5{font-size: 1.4rem;
+      height: 4rem;
+      line-height: 1.4rem;}
+.row5>td{padding:0 1rem;}
+.row5>td>span{color: #f01400;}
+.row6{color: #a9a9a9;
+      font-size: 1.2rem;
+      height: 4rem;
+      line-height: 1.4rem;
+     }
+.row6>td{padding:0 1rem;}
+
+
+.col-lg-4>.container{position: relative;
+                     z-index: 0;
+                  }
+.mask>.ios{text-align: center;
+            margin-top: 8rem;
+            }    
+.mask>.ios-info{    
+                  text-align: justify;
+                  text-indent:2em;
+                  padding: 4rem 3rem;
+                  }       
+.mask{position: absolute;
+      left: 0;
+      top: 0;
+      width:100%;
+      height:0;
+      background: rgba(0, 0, 0, 0.5);
+      font-size: 1.6rem;
+      z-index: 1;
+      opacity: 0;
+      transition:0.2s;
+     }
+.col-lg-4>.container:hover .mask{
+                                 height: 100%;
+                                 color: #fff;
+                                 opacity: 1;
+                                }
+
+
+footer{color: #fff;
+       background-color: #26a26f;
+       font-size: 1.4rem;
+      }
+footer img{padding-top: 0.7rem;}
+.footer-box{display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 17rem;
+            
+           }
+.footer-box span{padding-bottom: 0.2rem;}
+.footer-box span:hover{
+      border-bottom: 0.1rem solid #fff;
+}
+.contact{padding-bottom: 6rem;}
+.website{padding: 2.6rem 0;}
+.wechat{padding-left: 0.4rem;}
+
+.copyright-information{font-size: 1.4rem;
+                       background-color: #26a26f;
+                       color: #fff;
+                       text-align: center;
+                       line-height: 3rem;
+                       vertical-align: middle;
+                       border-top: 0.1rem solid #32c086;
+                      }

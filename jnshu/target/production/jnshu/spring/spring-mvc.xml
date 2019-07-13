@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:lang="http://www.springframework.org/schema/lang"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd">
+    <!-- 配置包扫描器只扫描Conteoller注解的类 -->
+    <context:component-scan base-package="com.jnshu.controller"/>
+    <!--<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+    <!--</context:component-scan>-->
+    <!-- 配置注解驱动-->
+    <mvc:annotation-driven/>
+    <!--<mvc:message-converters>-->
+
+    <!--</mvc:message-converters>-->
+    <!--<bean-->
+    <!--class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">-->
+    <!--<property name="supportedMediaTypes">-->
+    <!--</property>-->
+    <!--&lt;!&ndash; 通用json日期转换， @JsonFormat 优先级更高 &ndash;&gt;-->
+    <!--<property name="objectMapper">-->
+    <!--<bean class="com.fasterxml.jackson.databind.ObjectMapper">-->
+    <!--<property name="dateFormat">-->
+    <!--<bean class="java.text.SimpleDateFormat">-->
+    <!--<constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss"/>-->
+    <!--</bean>-->
+    <!--</property>-->
+    <!--&lt;!&ndash; Json 不为空 &ndash;&gt;-->
+    <!--&lt;!&ndash;<property name="serializationInclusion">&ndash;&gt;-->
+    <!--&lt;!&ndash;<value type="com.fasterxml.jackson.annotation.JsonInclude.Include">NON_NULL</value>&ndash;&gt;-->
+    <!--&lt;!&ndash;</property>&ndash;&gt;-->
+    <!--</bean>-->
+    <!--</property>-->
+    <!--</bean>-->
+
+    <!--</mvc:annotation-driven>-->
+    <!--静态资源访问-->
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property name="order" value="2"/>
+        <property name="defaultViews">
+            <list>
+                <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
+            </list>
+        </property>
+    </bean>
+    <!--&lt;!&ndash;视图解析器&ndash;&gt;-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="suffix" value=".jsp" />
+        <property name="contentType" value="text/html;chatset=utf-8"/>
+        <property name="cache" value="false"/>
+    </bean>
+    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+        <property name="order" value="100"/>
+    </bean>
+
+    <!--tiles-->
+    <bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="order" value="1"/>
+        <property name="viewClass">
+            <value>org.springframework.web.servlet.view.tiles3.TilesView</value>
+        </property>
+    </bean>
+    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+        <property name="definitions">
+            <list>
+            <value>/WEB-INF/tiles.xml</value>
+            </list>
+        </property>
+    </bean>
+
+
+
+    <mvc:default-servlet-handler/>
+
+    <!-- 配置拦截器 -->
+    <mvc:interceptors>
+        <!-- 多个拦截器，按顺序执行 -->
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/**"/>-->
+            <!--<mvc:exclude-mapping path="/js/**"/>-->
+            <!--<mvc:exclude-mapping path="/css/**"/>-->
+            <!--<mvc:exclude-mapping path="/imges/**"/>-->
+            <!--<bean class="com.jnshu.interceptor.loginInterceptor"/>-->
+        <!--</mvc:interceptor>-->
+        <mvc:interceptor>
+            <mvc:mapping path="/u/**"/>
+            <bean class="com.jnshu.interceptor.loginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    <!--<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">-->
+        <!--<property name="defaultEncoding" value="utf-8"></property>-->
+        <!--<property name="maxUploadSize" value="10485760000"></property>-->
+        <!--<property name="maxInMemorySize" value="40960"></property>-->
+    <!--</bean>-->
+</beans>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="defaultPage" template="/WEB-INF/jsp/default.jsp">
+        <put-attribute name="navbar" value="/WEB-INF/jsp/navbar-inner.jsp"/>
+        <put-attribute name="headMenu" value="/WEB-INF/jsp/navbar-menu.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/defaultContent.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/jsp/footer.jsp"/>
+    </definition>
+    <definition name="home" extends="defaultPage">
+        <put-attribute name="body" value="/WEB-INF/jsp/homeContent.jsp"/>
+    </definition>
+    <definition name="profession" extends="defaultPage">
+        <put-attribute name="body" value="/WEB-INF/jsp/professionContent.jsp"/>
+    </definition>
+
+    <definition name="recommend" extends="defaultPage">
+        <put-attribute name="body" value="/WEB-INF/jsp/recommendContent.jsp"/>
+    </definition>
+    <definition name="error" extends="defaultPage">
+        <put-attribute name="body" value="/WEB-INF/jsp/error.jsp"/>
+    </definition>
+    <definition name="loginPage" extends="defaultPage">
+        <put-attribute name="body" value="/WEB-INF/jsp/loginContent.jsp"/>
+    </definition>
+    <definition name="signupPage" extends="defaultPage">
+        <put-attribute name="body" value="/WEB-INF/jsp/signupContent.jsp"/>
+    </definition>
+    <definition name="addPage" extends="defaultPage">
+        <put-attribute name="body" value="/WEB-INF/jsp/addStudentContent.jsp"/>
+    </definition>
+
+    <definition name="updatePage" extends="defaultPage">
+        <put-attribute name="body" value="/WEB-INF/jsp/updateContent.jsp"/>
+    </definition>
+    <definition name="studentPage" extends="defaultPage">
+        <put-attribute name="body" value="/WEB-INF/jsp/studentContent.jsp"/>
+    </definition>
+</tiles-definitions>

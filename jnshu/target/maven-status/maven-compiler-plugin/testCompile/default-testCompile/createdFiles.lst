@@ -1,0 +1,9 @@
+com\jnshu\utils\MD5UtilTest.class
+com\jnshu\mapper\UserMapperTest.class
+com\jnshu\service\ProfessionServiceTest.class
+com\jnshu\service\serviceImpl\UserServiceImplTest.class
+com\jnshu\utils\JJWTUtilTest.class
+com\jnshu\mapper\BannerMapperTest.class
+com\jnshu\service\serviceImpl\StudentServiceImplTest.class
+com\jnshu\utils\DESUtilTest.class
+com\jnshu\mapper\ProfessionMapperTest.class

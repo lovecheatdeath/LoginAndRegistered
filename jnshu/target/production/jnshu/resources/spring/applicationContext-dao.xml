@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+   http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+   http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+    <!--开启注解-->
+    <context:annotation-config/>
+    <!-- 加载配置文件 -->
+    <context:property-placeholder location="classpath:config/*.properties" />
+    <!--自动扫描service-->
+    <context:component-scan base-package="com.jnshu">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+    <!-- 数据库连接池 -->
+    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
+          p:driverClassName="${jdbc.driver}" p:jdbcUrl="${jdbc.url}" p:username="${jdbc.username}" p:password="${jdbc.password}"
+    >
+        <property name="readOnly" value="false" />
+        <!-- 等待连接池分配连接的最大时长（毫秒），超过这个时长还没可用的连接则发生SQLException， 缺省:30秒 -->
+        <property name="connectionTimeout" value="30000" />
+        <!-- 一个连接idle状态的最大时长（毫秒），超时则被释放（retired），缺省:10分钟 -->
+        <property name="idleTimeout" value="600000" />
+        <!-- 一个连接的生命时长（毫秒），超时而且没被使用则被释放（retired），缺省:30分钟，建议设置比数据库超时时长少30秒，参考MySQL wait_timeout参数（show variables like '%timeout%';） -->
+        <property name="maxLifetime" value="1800000" />
+        <!-- 连接池中允许的最大连接数。缺省值：10；推荐的公式：((core_count * 2) + effective_spindle_count) -->
+        <property name="maximumPoolSize" value="15" />
+    </bean>
+    <!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"-->
+    <!--destroy-method="close">-->
+    <!--<property name="jdbcUrl" value="${jdbc.url}" />-->
+    <!--<property name="user" value="${jdbc.username}" />-->
+    <!--<property name="password" value="${jdbc.password}" />-->
+    <!--<property name="driverClass" value="${jdbc.driver}" />-->
+    <!--<property name="maxActive" value="${druid.maxActive}" />-->
+    <!--<property name="minIdle" value="${druid.minIdle}" />-->
+    <!--</bean>-->
+
+    <!-- 让spring管理sqlSessionFactory -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <!-- 加载mybatis的全局配置文件 -->
+        <property name="configLocation" value="classpath:mybatis/mybatisConfig.xml" />
+        <property name="typeAliasesPackage" value="com.jnshu.pojo"/>
+        <!-- 扫描sql配置文件:mapper需要的xml文件 -->
+        <property name="mapperLocations">
+            <list>
+                <value>classpath:com/jnshu/mapper/mapperImpl/*.xml</value>
+            </list>
+        </property>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.jnshu.mapper" />
+        <!-- 具体dao层包的位置在哪，视你新建的dao层java包而定 -->
+    </bean>
+
+    <!--<context:component-scan base-package="com.jnshu.mapper"/>-->
+    <!--获取session-->
+    <!--<bean id="accountMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">-->
+    <!--<property name="mapperInterface" value="com.jnshu.mapper.AccountMapper"/>-->
+    <!--<property name="sqlSessionFactory" ref="sqlSessionFactory"/>-->
+    <!--</bean>-->
+    <!-- 读取国际化资源文件,可以配置多个 -->
+    <!--<bean id="messageSource"-->
+          <!--class="org.springframework.context.support.ReloadableResourceBundleMessageSource">-->
+        <!--<property name="basenames">-->
+            <!--<list>-->
+                <!--<value>classpath:message</value>-->
+            <!--</list>-->
+        <!--</property>-->
+        <!--<property name="defaultEncoding" value="UTF-8"/>-->
+    <!--</bean>-->
+</beans>
