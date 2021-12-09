@@ -21,7 +21,7 @@
     <spring.version>5.1.5.RELEASE</spring.version>
     <slf4j.version>1.7.25</slf4j.version>
     <logback.version>1.2.3</logback.version>
-    <jackson.version>2.9.8</jackson.version>
+    <jackson.version>2.9.10.8</jackson.version>
     <HikariCP.version>3.2.0</HikariCP.version>
     <Tiles.verison>3.0.8</Tiles.verison>
   </properties>
